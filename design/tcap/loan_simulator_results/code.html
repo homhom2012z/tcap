@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TCAP - Simulation Results</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b77f",
+                        "primary-dark": "#0d9366",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#0f1115",
+                        "surface-dark": "#181a1e",
+                        "glass-border": "rgba(255, 255, 255, 0.08)",
+                        "glass-bg": "rgba(255, 255, 255, 0.03)",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "2xl": "2rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f1115; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #283933; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b544b; 
+        }
+        .glass-panel {
+            background: rgba(30, 35, 40, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-white font-display min-h-screen flex flex-col overflow-x-hidden selection:bg-primary selection:text-white">
+<header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b-0 border-b-glass-border">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 text-primary flex items-center justify-center bg-primary/10 rounded-xl">
+<span class="material-symbols-outlined text-3xl">account_balance_wallet</span>
+</div>
+<h2 class="text-white text-xl font-bold tracking-tight">TCAP</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-gray-400 hover:text-white transition-colors text-sm font-medium" href="#">Dashboard</a>
+<a class="text-white text-sm font-medium border-b-2 border-primary py-1" href="#">Simulation</a>
+<a class="text-gray-400 hover:text-white transition-colors text-sm font-medium" href="#">Loans</a>
+<a class="text-gray-400 hover:text-white transition-colors text-sm font-medium" href="#">Profile</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="size-10 flex items-center justify-center rounded-full text-gray-400 hover:text-white hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 border-2 border-primary/20 cursor-pointer" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBp712bdWjiBli6iAxGwLqP5O3hU-KDbtq7DmGsZoFHZ6-nzjUZImHta_7Ll4jL6uP8HureVPZJ_6SVDN0GOOhwH4UxjUPVCBVe8csnmQ1FrTmEkEdKFLnOV5aepl9_Di8Bys-mIPlvvHKiR0AeN7DdROe34G7qC2xGp80R9PNROrvoxFB4KK99s7VZtXaj37A5VHpDSv5zDa0_as89lOTmpsbjASIbFanR_K7kpXOegVup-b-dHEsiIDXDwFep4dr37AisgwpS9BN3");'>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow pt-28 pb-12 px-6">
+<div class="max-w-5xl mx-auto flex flex-col gap-8">
+<div class="flex flex-col items-center text-center gap-3 animate-[fadeIn_0.5s_ease-out]">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 text-xs font-semibold uppercase tracking-wider">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                Analysis Complete
+            </div>
+<h1 class="text-4xl md:text-5xl font-black tracking-tight text-white">Simulation Results</h1>
+<p class="text-gray-400 text-lg max-w-2xl">
+                Here is the projected impact of your new loan on your overall financial health and Debt Service Ratio (DSR).
+            </p>
+</div>
+<div class="glass-panel rounded-2xl p-8 md:p-12 relative overflow-hidden">
+<div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex flex-col md:flex-row items-center justify-around gap-12 relative z-10">
+<div class="flex flex-col items-center gap-4">
+<div class="relative size-48 md:size-56 group">
+<svg class="size-full -rotate-90" viewBox="0 0 100 100">
+<circle class="text-surface-dark stroke-current" cx="50" cy="50" fill="transparent" r="42" stroke-width="6"></circle>
+<circle class="text-primary stroke-current transition-all duration-1000 ease-out" cx="50" cy="50" fill="transparent" r="42" stroke-dasharray="263.89" stroke-dashoffset="171.5" stroke-linecap="round" stroke-width="6"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-sm text-gray-400 uppercase tracking-widest font-medium mb-1">Current</span>
+<span class="text-4xl md:text-5xl font-black text-white group-hover:scale-110 transition-transform">35%</span>
+<span class="text-sm text-primary font-bold bg-primary/10 px-3 py-1 rounded-full mt-2">Healthy</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center gap-2">
+<span class="material-symbols-outlined text-4xl text-gray-600 hidden md:block animate-pulse">arrow_forward</span>
+<span class="material-symbols-outlined text-4xl text-gray-600 md:hidden animate-bounce">arrow_downward</span>
+</div>
+<div class="flex flex-col items-center gap-4">
+<div class="relative size-56 md:size-64">
+<div class="absolute inset-0 bg-amber-500/10 rounded-full blur-xl animate-pulse"></div>
+<svg class="size-full -rotate-90 relative z-10" viewBox="0 0 100 100">
+<circle class="text-surface-dark stroke-current" cx="50" cy="50" fill="transparent" r="42" stroke-width="6"></circle>
+<circle class="text-amber-500 stroke-current drop-shadow-[0_0_15px_rgba(245,158,11,0.6)]" cx="50" cy="50" fill="transparent" r="42" stroke-dasharray="263.89" stroke-dashoffset="118.75" stroke-linecap="round" stroke-width="6"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center z-20">
+<span class="text-sm text-amber-400 uppercase tracking-widest font-medium mb-1">Projected</span>
+<span class="text-5xl md:text-6xl font-black text-white">55%</span>
+<span class="text-sm text-amber-500 font-bold bg-amber-500/10 px-3 py-1 rounded-full mt-2 border border-amber-500/20">Caution</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 text-center border-t border-glass-border pt-6">
+<p class="text-gray-300 max-w-2xl mx-auto">
+                    Adding this loan will increase your DSR by <span class="text-amber-400 font-bold">+20%</span>. 
+                    This pushes you into the <span class="text-white font-medium">Warning Zone</span>. Banks may scrutinize future applications more closely.
+                </p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="glass-panel p-6 rounded-2xl flex flex-col gap-2 hover:bg-white/5 transition-colors group">
+<div class="flex items-center gap-2 mb-1 text-gray-400 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">payments</span>
+<span class="text-xs uppercase tracking-wider font-semibold">Loan Amount</span>
+</div>
+<div class="text-2xl font-bold text-white font-mono">฿ 500,000</div>
+<div class="text-xs text-gray-500">Principal Requested</div>
+</div>
+<div class="glass-panel p-6 rounded-2xl flex flex-col gap-2 hover:bg-white/5 transition-colors group">
+<div class="flex items-center gap-2 mb-1 text-gray-400 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">calendar_today</span>
+<span class="text-xs uppercase tracking-wider font-semibold">Tenure</span>
+</div>
+<div class="text-2xl font-bold text-white font-mono">3 Years</div>
+<div class="text-xs text-gray-500">36 Monthly Terms</div>
+</div>
+<div class="glass-panel p-6 rounded-2xl flex flex-col gap-2 hover:bg-white/5 transition-colors relative overflow-hidden ring-1 ring-primary/30">
+<div class="absolute inset-0 bg-primary/5"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-1 text-primary-dark">
+<span class="material-symbols-outlined text-xl text-primary">currency_exchange</span>
+<span class="text-xs uppercase tracking-wider font-bold text-primary">Monthly Pay</span>
+</div>
+<div class="text-2xl font-bold text-primary font-mono">฿ 15,530</div>
+<div class="text-xs text-primary/70">Est. Installment</div>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-2xl flex flex-col gap-2 hover:bg-white/5 transition-colors group">
+<div class="flex items-center gap-2 mb-1 text-gray-400 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">trending_up</span>
+<span class="text-xs uppercase tracking-wider font-semibold">Total Interest</span>
+</div>
+<div class="text-2xl font-bold text-white font-mono">฿ 59,080</div>
+<div class="text-xs text-gray-500">@ 7.5% p.a.</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row gap-4 justify-center mt-2 pb-6 border-b border-glass-border">
+<button class="px-8 py-4 rounded-xl border border-glass-border text-gray-300 hover:text-white hover:bg-white/5 font-semibold flex items-center justify-center gap-2 transition-all w-full md:w-auto">
+<span class="material-symbols-outlined">restart_alt</span>
+                New Simulation
+            </button>
+<button class="px-8 py-4 rounded-xl border border-glass-border bg-surface-dark text-white hover:bg-surface-dark/80 font-semibold flex items-center justify-center gap-2 transition-all w-full md:w-auto">
+<span class="material-symbols-outlined">compare_arrows</span>
+                Compare Scenarios
+            </button>
+<button class="px-8 py-4 rounded-xl bg-primary hover:bg-primary-dark text-white font-bold shadow-lg shadow-primary/25 hover:shadow-primary/40 flex items-center justify-center gap-2 transition-all transform hover:-translate-y-0.5 w-full md:w-auto">
+<span class="material-symbols-outlined">save</span>
+                Save This Scenario
+            </button>
+</div>
+<div class="flex gap-4 items-start max-w-3xl mx-auto opacity-80 hover:opacity-100 transition-opacity">
+<div class="size-10 rounded-full bg-blue-500/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-blue-400">school</span>
+</div>
+<div>
+<h4 class="text-white font-bold text-sm mb-1">Improving your financial health</h4>
+<p class="text-sm text-gray-400 leading-relaxed">
+                     To improve your creditworthiness, try to maintain a DSR below 40%. You can achieve this by extending the loan tenure or reducing the principal amount. <a class="text-primary hover:text-primary-dark hover:underline transition-colors ml-1" href="#">Read our guide on DSR Management.</a>
+</p>
+</div>
+</div>
+</div>
+</main>
+
+</body></html>

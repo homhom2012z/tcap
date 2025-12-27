@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Income Details - TCAP</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#11d493",
+                        "primary-dark": "#0eac77",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "surface-dark": "#1c2723",
+                        "border-dark": "#3b544b",
+                        "text-secondary": "#9db9b0"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(17, 212, 147, 0.15)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #10221c; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #283933; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b544b; 
+        }
+        .glass-panel {
+            background: rgba(28, 39, 35, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(59, 84, 75, 0.5);
+        }
+        .nav-glass {
+            background: rgba(17, 24, 22, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(59, 84, 75, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-white font-display h-screen flex flex-col overflow-hidden selection:bg-primary selection:text-[#111816]">
+<nav class="w-full nav-glass h-20 flex items-center justify-between px-6 lg:px-12 sticky top-0 z-50 shrink-0">
+<div class="flex items-center gap-2">
+<span class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center text-[#111816] shadow-glow">
+<span class="material-symbols-outlined text-[24px] font-bold">account_balance_wallet</span>
+</span>
+<div class="flex flex-col">
+<h1 class="text-white text-xl font-bold leading-none tracking-tight">TCAP</h1>
+<p class="text-text-secondary text-[10px] font-medium leading-none tracking-wide pt-1">Credit Planner</p>
+</div>
+</div>
+<div class="hidden lg:flex items-center gap-2">
+<a class="flex items-center gap-2 px-4 py-2.5 rounded-full text-text-secondary hover:text-white hover:bg-white/5 transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform text-[20px]">pie_chart</span>
+<span class="text-sm font-medium leading-normal">Dashboard</span>
+</a>
+<a class="flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#283933] text-white shadow-glow border border-[#3b544b]/50" href="#">
+<span class="material-symbols-outlined text-primary fill-1 text-[20px]">payments</span>
+<span class="text-sm font-medium leading-normal">Income Details</span>
+</a>
+<a class="flex items-center gap-2 px-4 py-2.5 rounded-full text-text-secondary hover:text-white hover:bg-white/5 transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform text-[20px]">credit_card</span>
+<span class="text-sm font-medium leading-normal">Existing Debts</span>
+</a>
+<a class="flex items-center gap-2 px-4 py-2.5 rounded-full text-text-secondary hover:text-white hover:bg-white/5 transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform text-[20px]">calculate</span>
+<span class="text-sm font-medium leading-normal">Loan Simulation</span>
+</a>
+<a class="flex items-center gap-2 px-4 py-2.5 rounded-full text-text-secondary hover:text-white hover:bg-white/5 transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform text-[20px]">settings</span>
+<span class="text-sm font-medium leading-normal">Settings</span>
+</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex flex-col items-end">
+<p class="text-sm font-medium text-white">Alex Morgan</p>
+<p class="text-xs text-text-secondary">Premium Plan</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#3b544b] to-[#283933] flex items-center justify-center border border-border-dark cursor-pointer hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-text-secondary text-xl">person</span>
+</div>
+<button class="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-white/5 text-text-secondary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<main class="flex-1 relative flex flex-col h-full overflow-hidden">
+<div class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/3"></div>
+<div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none -translate-x-1/3 translate-y-1/3"></div>
+<div class="flex-1 overflow-y-auto relative z-10">
+<div class="max-w-[1000px] mx-auto px-6 py-10 lg:px-8 lg:py-12 flex flex-col gap-10">
+<div class="flex flex-col gap-3 text-center lg:text-left">
+<h2 class="text-white text-4xl font-black leading-tight tracking-[-0.033em]">Income Details</h2>
+<p class="text-text-secondary text-lg font-normal leading-normal max-w-3xl lg:mx-0 mx-auto">
+                        Update your monthly earnings to ensure accurate DSR calculations. We use this data to simulate your maximum borrowing limit.
+                    </p>
+</div>
+<div class="glass-panel rounded-2xl p-8 lg:p-10 shadow-2xl flex flex-col gap-10">
+<div class="flex flex-col gap-4">
+<label class="flex flex-col w-full">
+<span class="text-white text-base font-semibold leading-normal pb-3">Gross Monthly Salary</span>
+<div class="flex w-full items-stretch rounded-xl shadow-lg transition-shadow focus-within:shadow-glow">
+<input class="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-l-xl text-white border border-[#3b544b] bg-[#111816] focus:border-primary focus:ring-1 focus:ring-primary h-16 pl-6 pr-4 text-2xl font-bold leading-normal placeholder:text-[#3b544b] transition-colors outline-none" placeholder="0.00" type="text" value="85,000"/>
+<div class="text-text-secondary flex border border-[#3b544b] border-l-0 bg-[#1c2723] items-center justify-center px-6 rounded-r-xl">
+<span class="text-lg font-semibold tracking-wide">THB</span>
+</div>
+</div>
+</label>
+<div class="flex gap-2 items-start px-1">
+<span class="material-symbols-outlined text-text-secondary text-[18px] mt-0.5">info</span>
+<p class="text-text-secondary text-sm font-normal leading-normal">
+                                This is your fixed income before taxes. This figure is the primary baseline for your borrowing limit.
+                            </p>
+</div>
+</div>
+<div class="h-px w-full bg-[#3b544b]/50"></div>
+<div class="flex flex-col gap-6">
+<div class="flex flex-col gap-1">
+<h3 class="text-white text-xl font-bold leading-tight">Additional Income Sources</h3>
+<p class="text-text-secondary text-base font-normal">Freelance, rental income, or annual bonuses.</p>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 rounded-xl bg-[#111816]/50 border border-[#3b544b] hover:border-primary/50 transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">work</span>
+</div>
+<div class="flex flex-col">
+<p class="text-white font-semibold">Freelance Consulting</p>
+<p class="text-text-secondary text-xs">Monthly Average</p>
+</div>
+</div>
+<div class="flex items-center gap-6 mt-3 sm:mt-0 w-full sm:w-auto justify-between sm:justify-end">
+<p class="text-white font-bold text-lg">+ 12,500 <span class="text-xs text-text-secondary font-normal">THB</span></p>
+<button class="text-text-secondary hover:text-red-400 transition-colors p-2 rounded-lg hover:bg-white/5">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<button class="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed border-[#3b544b] h-14 bg-transparent hover:bg-[#3b544b]/20 hover:border-primary/50 text-primary transition-all group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">add_circle</span>
+<span class="text-sm font-semibold leading-normal">Add Income Source</span>
+</button>
+</div>
+<div class="bg-gradient-to-r from-[#111816] to-[#1c2723] rounded-xl border border-[#3b544b] p-6 flex flex-col md:flex-row items-center justify-between gap-6 shadow-lg">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center shadow-glow text-[#111816]">
+<span class="material-symbols-outlined text-[28px]">savings</span>
+</div>
+<div class="flex flex-col">
+<p class="text-white text-sm font-medium uppercase tracking-wider opacity-80">Total Monthly Income</p>
+<p class="text-primary text-xs font-normal">Ready for simulation</p>
+</div>
+</div>
+<div class="text-center md:text-right">
+<p class="text-4xl font-black text-white tracking-tight leading-none">97,500</p>
+<p class="text-text-secondary text-sm font-medium mt-1">THB / Month</p>
+</div>
+</div>
+<div class="flex flex-col-reverse sm:flex-row items-center justify-end gap-4 pt-2">
+<button class="w-full sm:w-auto h-12 px-8 rounded-xl text-text-secondary font-medium hover:text-white hover:bg-white/5 transition-colors">
+                            Cancel
+                        </button>
+<button class="w-full sm:w-auto h-12 px-8 bg-gradient-to-r from-primary to-primary-dark hover:brightness-110 text-[#111816] text-base font-bold leading-normal rounded-xl shadow-glow hover:shadow-[0_0_30px_rgba(17,212,147,0.3)] transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">check</span>
+                            Save Income Details
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+</body></html>
