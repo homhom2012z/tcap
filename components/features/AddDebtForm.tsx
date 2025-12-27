@@ -167,16 +167,16 @@ export default function AddDebtForm({ onClose, onSave }: AddDebtFormProps) {
         onClick={onClose}
       ></div>
 
-      <div className="relative w-full max-w-lg transform overflow-hidden rounded-2xl bg-surface-primary border border-white/10 shadow-2xl transition-all backdrop-blur-xl animate-fade-in-up">
+      <div className="relative w-full max-w-lg transform overflow-hidden rounded-2xl bg-surface-secondary border border-border-primary shadow-2xl transition-all backdrop-blur-xl animate-fade-in-up">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-5 border-b border-white/5">
-          <h3 className="text-lg font-bold text-white tracking-tight">
+        <div className="flex items-center justify-between px-6 py-5 border-b border-border-primary">
+          <h3 className="text-lg font-bold text-text-primary tracking-tight">
             {t("titleAdd")}
           </h3>
           <button
             onClick={onClose}
             aria-label="Close"
-            className="text-gray-400 hover:text-white transition-colors rounded-full p-1 hover:bg-white/10"
+            className="text-text-secondary hover:text-text-primary transition-colors rounded-full p-1 hover:bg-surface-hover"
           >
             <span className="material-symbols-outlined text-[20px]">close</span>
           </button>
@@ -186,7 +186,7 @@ export default function AddDebtForm({ onClose, onSave }: AddDebtFormProps) {
         <div className="px-6 py-6 space-y-6">
           {/* Lender Name */}
           <div className="space-y-2">
-            <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider">
+            <label className="block text-xs font-semibold text-text-secondary uppercase tracking-wider">
               {t("lenderName")} <span className="text-red-400">*</span>
             </label>
             <div className="relative group">
@@ -212,8 +212,8 @@ export default function AddDebtForm({ onClose, onSave }: AddDebtFormProps) {
                 className={`block w-full rounded-lg border ${
                   touched.lenderName && errors.lenderName
                     ? "border-red-400 focus:border-red-400 focus:ring-red-400"
-                    : "border-white/10 focus:border-primary focus:ring-primary"
-                } bg-black/40 py-2.5 pl-10 pr-3 text-white placeholder-gray-500 focus:ring-1 sm:text-sm focus:outline-none transition-all`}
+                    : "border-input-border focus:border-primary focus:ring-primary"
+                } bg-input-bg py-2.5 pl-10 pr-3 text-text-primary placeholder-text-secondary focus:ring-1 sm:text-sm focus:outline-none transition-all`}
                 placeholder={t("lenderPlaceholder")}
               />
             </div>
@@ -229,7 +229,7 @@ export default function AddDebtForm({ onClose, onSave }: AddDebtFormProps) {
 
           {/* Debt Type */}
           <div className="space-y-2">
-            <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider">
+            <label className="block text-xs font-semibold text-text-secondary uppercase tracking-wider">
               {t("debtType")}
             </label>
             <div className="flex flex-wrap gap-2">
@@ -248,7 +248,7 @@ export default function AddDebtForm({ onClose, onSave }: AddDebtFormProps) {
                     checked={type === item.id}
                     onChange={() => setType(item.id as DebtType)}
                   />
-                  <span className="inline-flex items-center px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-gray-400 text-xs font-medium transition-all peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary hover:bg-white/10 peer-checked:hover:bg-primary">
+                  <span className="inline-flex items-center px-3 py-1.5 rounded-full border border-input-border bg-input-bg text-text-secondary text-xs font-medium transition-all peer-checked:bg-primary peer-checked:text-text-inverse peer-checked:border-primary hover:bg-surface-hover peer-checked:hover:bg-primary">
                     {item.label}
                   </span>
                 </label>
@@ -259,7 +259,7 @@ export default function AddDebtForm({ onClose, onSave }: AddDebtFormProps) {
           {/* Outstanding Balance */}
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider">
+              <label className="block text-xs font-semibold text-text-secondary uppercase tracking-wider">
                 {t("outstandingBalance")}{" "}
                 <span className="text-red-400">*</span>
               </label>
@@ -275,13 +275,13 @@ export default function AddDebtForm({ onClose, onSave }: AddDebtFormProps) {
                   className={`block w-full rounded-lg border ${
                     touched.balance && errors.balance
                       ? "border-red-400 focus:border-red-400 focus:ring-red-400"
-                      : "border-white/10 focus:border-primary focus:ring-primary"
-                  } bg-black/40 py-2.5 pl-4 pr-12 text-white placeholder-gray-500 focus:ring-1 sm:text-sm font-medium focus:outline-none transition-all`}
+                      : "border-input-border focus:border-primary focus:ring-primary"
+                  } bg-input-bg py-2.5 pl-4 pr-12 text-text-primary placeholder-text-secondary focus:ring-1 sm:text-sm font-medium focus:outline-none transition-all`}
                   placeholder="0.00"
                   min="0"
                 />
                 <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
-                  <span className="text-gray-500 text-xs font-bold">THB</span>
+                  <span className="text-text-muted text-xs font-bold">THB</span>
                 </div>
               </div>
               {touched.balance && errors.balance && (
@@ -296,7 +296,7 @@ export default function AddDebtForm({ onClose, onSave }: AddDebtFormProps) {
 
             {/* Interest Rate */}
             <div className="space-y-2">
-              <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider">
+              <label className="block text-xs font-semibold text-text-secondary uppercase tracking-wider">
                 {t("interestRate")}
               </label>
               <div className="relative group">
@@ -304,21 +304,21 @@ export default function AddDebtForm({ onClose, onSave }: AddDebtFormProps) {
                   type="number"
                   value={interestRate}
                   onChange={(e) => setInterestRate(e.target.value)}
-                  className="block w-full rounded-lg border border-white/10 focus:border-primary focus:ring-primary bg-black/40 py-2.5 pl-4 pr-10 text-white placeholder-gray-500 focus:ring-1 sm:text-sm font-medium focus:outline-none transition-all"
+                  className="block w-full rounded-lg border border-input-border focus:border-primary focus:ring-primary bg-input-bg py-2.5 pl-4 pr-10 text-text-primary placeholder-text-secondary focus:ring-1 sm:text-sm font-medium focus:outline-none transition-all"
                   placeholder={type === "HOME_LOAN" ? "3.0" : "0.0"}
                   min="0"
                   step="0.01"
                 />
                 <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
-                  <span className="text-gray-500 text-xs font-bold">%</span>
+                  <span className="text-text-muted text-xs font-bold">%</span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* NEW: Installment Term */}
-          <div className="space-y-3 pt-2 border-t border-white/5">
-            <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider">
+          <div className="space-y-3 pt-2 border-t border-border-secondary">
+            <label className="block text-xs font-semibold text-text-secondary uppercase tracking-wider">
               {t("installmentTerm")}
             </label>
             <div className="flex flex-col gap-3">
@@ -330,9 +330,9 @@ export default function AddDebtForm({ onClose, onSave }: AddDebtFormProps) {
                     name="term_unit"
                     checked={termUnit === "MONTHS"}
                     onChange={() => setTermUnit("MONTHS")}
-                    className="text-primary focus:ring-primary bg-black/40 border-white/20"
+                    className="text-primary focus:ring-primary bg-input-bg border-input-border"
                   />
-                  <span className="text-sm text-gray-300">
+                  <span className="text-sm text-text-secondary">
                     {t("termMonths")}
                   </span>
                 </label>
@@ -342,9 +342,9 @@ export default function AddDebtForm({ onClose, onSave }: AddDebtFormProps) {
                     name="term_unit"
                     checked={termUnit === "YEARS"}
                     onChange={() => setTermUnit("YEARS")}
-                    className="text-primary focus:ring-primary bg-black/40 border-white/20"
+                    className="text-primary focus:ring-primary bg-input-bg border-input-border"
                   />
-                  <span className="text-sm text-gray-300">
+                  <span className="text-sm text-text-secondary">
                     {t("termYears")}
                   </span>
                 </label>
@@ -354,9 +354,11 @@ export default function AddDebtForm({ onClose, onSave }: AddDebtFormProps) {
                     name="term_unit"
                     checked={termUnit === "NONE"}
                     onChange={() => setTermUnit("NONE")}
-                    className="text-primary focus:ring-primary bg-black/40 border-white/20"
+                    className="text-primary focus:ring-primary bg-input-bg border-input-border"
                   />
-                  <span className="text-sm text-gray-300">{t("termNone")}</span>
+                  <span className="text-sm text-text-secondary">
+                    {t("termNone")}
+                  </span>
                 </label>
               </div>
 
@@ -367,7 +369,7 @@ export default function AddDebtForm({ onClose, onSave }: AddDebtFormProps) {
                     type="number"
                     value={termValue}
                     onChange={(e) => setTermValue(e.target.value)}
-                    className="block w-full rounded-lg border border-white/10 bg-black/40 py-2.5 px-4 text-white placeholder-gray-500 focus:border-primary focus:ring-primary focus:ring-1 sm:text-sm outline-none transition-all"
+                    className="block w-full rounded-lg border border-input-border bg-input-bg py-2.5 px-4 text-text-primary placeholder-text-secondary focus:border-primary focus:ring-primary focus:ring-1 sm:text-sm outline-none transition-all"
                     placeholder={
                       termUnit === "MONTHS" ? t("enterMonths") : t("enterYears")
                     }
@@ -379,14 +381,14 @@ export default function AddDebtForm({ onClose, onSave }: AddDebtFormProps) {
               {/* Manual Installment for NONE */}
               {termUnit === "NONE" && (
                 <div className="relative animate-fade-in-up space-y-2">
-                  <label className="block text-[10px] text-gray-500 uppercase">
+                  <label className="block text-[10px] text-text-muted uppercase">
                     {t("manualMonthlyPayment")}
                   </label>
                   <input
                     type="number"
                     value={manualInstallment}
                     onChange={(e) => setManualInstallment(e.target.value)}
-                    className="block w-full rounded-lg border border-white/10 bg-black/40 py-2.5 px-4 text-white placeholder-gray-500 focus:border-primary focus:ring-primary focus:ring-1 sm:text-sm outline-none transition-all"
+                    className="block w-full rounded-lg border border-input-border bg-input-bg py-2.5 px-4 text-text-primary placeholder-text-secondary focus:border-primary focus:ring-primary focus:ring-1 sm:text-sm outline-none transition-all"
                     placeholder={t("specifyMonthlyAmount")}
                     min="0"
                   />
@@ -396,22 +398,22 @@ export default function AddDebtForm({ onClose, onSave }: AddDebtFormProps) {
           </div>
 
           {/* Calculation Result */}
-          <div className="flex items-start gap-2 p-3 rounded bg-emerald-900/20 border border-emerald-500/20 animate-fade-in">
-            <span className="material-symbols-outlined text-emerald-400 text-[18px] mt-0.5">
+          <div className="flex items-start gap-2 p-3 rounded bg-surface-tertiary border border-border-secondary animate-fade-in">
+            <span className="material-symbols-outlined text-primary text-[18px] mt-0.5">
               analytics
             </span>
             <div>
-              <p className="text-xs text-emerald-400 font-medium">
+              <p className="text-xs text-primary font-medium">
                 {t("calculatedBurden")}
               </p>
-              <p className="text-sm font-bold text-white">
+              <p className="text-sm font-bold text-text-primary">
                 ≈{" "}
                 {estimatedPayment.toLocaleString(undefined, {
                   maximumFractionDigits: 0,
                 })}{" "}
                 {tCommon("baht")} {tCommon("perMonth")}
                 {termUnit !== "NONE" && currentTerm > 0 && (
-                  <span className="text-gray-400 font-normal ml-1">
+                  <span className="text-text-muted font-normal ml-1">
                     (over {currentTerm} {termUnit.toLowerCase()})
                   </span>
                 )}
@@ -421,7 +423,7 @@ export default function AddDebtForm({ onClose, onSave }: AddDebtFormProps) {
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-5 bg-black/20 border-t border-white/5 flex gap-3 flex-row-reverse">
+        <div className="px-6 py-5 bg-surface-secondary/50 border-t border-border-primary flex gap-3 flex-row-reverse">
           <button
             onClick={handleSubmit}
             disabled={isSubmitting || !lenderName.trim() || !balance}
@@ -434,7 +436,7 @@ export default function AddDebtForm({ onClose, onSave }: AddDebtFormProps) {
           </button>
           <button
             onClick={onClose}
-            className="flex-1 sm:flex-none sm:w-auto px-6 py-2.5 bg-transparent border border-white/10 hover:bg-white/5 text-gray-300 text-sm font-medium rounded-lg transition-colors"
+            className="flex-1 sm:flex-none sm:w-auto px-6 py-2.5 bg-transparent border border-input-border hover:bg-surface-hover text-text-secondary hover:text-text-primary text-sm font-medium rounded-lg transition-colors"
           >
             {tCommon("cancel")}
           </button>

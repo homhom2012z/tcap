@@ -261,8 +261,8 @@ export default function LiabilitiesPage() {
               </button>
 
               {/* Stats */}
-              <div className="flex gap-4">
-                <div className="flex min-w-[180px] flex-col gap-1 rounded-2xl p-5 bg-surface-primary border border-border-primary shadow-card">
+              <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+                <div className="flex flex-1 min-w-[180px] flex-col gap-1 rounded-2xl p-5 bg-surface-primary border border-border-primary shadow-card">
                   <p className="text-text-secondary text-sm font-medium flex items-center gap-2">
                     <span className="material-symbols-outlined text-primary text-base">
                       payments
@@ -273,7 +273,7 @@ export default function LiabilitiesPage() {
                     {Math.round(totalMonthlyObligation).toLocaleString()} THB
                   </p>
                 </div>
-                <div className="flex min-w-[180px] flex-col gap-1 rounded-2xl p-5 bg-surface-primary border border-border-primary shadow-card">
+                <div className="flex flex-1 min-w-[180px] flex-col gap-1 rounded-2xl p-5 bg-surface-primary border border-border-primary shadow-card">
                   <p className="text-text-secondary text-sm font-medium flex items-center gap-2">
                     <span className="material-symbols-outlined text-primary text-base">
                       pie_chart
@@ -305,7 +305,7 @@ export default function LiabilitiesPage() {
               snapshot.debts.length === 0 ? "h-[300px]" : "h-[600px]"
             }`}
           >
-            <div className="flex items-center justify-between px-4 sm:px-6 py-5 border-b border-border-primary overflow-x-auto scrollbar-hide gap-4">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between px-4 sm:px-6 py-5 border-b border-border-primary gap-4">
               <div className="flex items-center gap-3 shrink-0">
                 <span className="material-symbols-outlined text-text-muted">
                   list_alt
@@ -317,7 +317,7 @@ export default function LiabilitiesPage() {
                   {snapshot.debts.length} Items
                 </span>
               </div>
-              <div className="flex items-center gap-3 shrink-0">
+              <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
                 <button
                   onClick={() => setIsImportModalOpen(true)}
                   className="flex items-center gap-2 bg-surface-primary hover:bg-surface-hover active:bg-surface-secondary text-text-primary border border-border-primary px-4 py-2 rounded-xl text-sm font-bold transition-all group whitespace-nowrap"
@@ -325,7 +325,8 @@ export default function LiabilitiesPage() {
                   <span className="material-symbols-outlined text-[20px] text-red-400 group-hover:text-red-300 transition-colors">
                     picture_as_pdf
                   </span>
-                  <span>{t("import")}</span>
+                  <span className="hidden sm:inline">{t("import")}</span>
+                  <span className="inline sm:hidden">Import</span>
                 </button>
 
                 {snapshot.debts.length > 0 && (

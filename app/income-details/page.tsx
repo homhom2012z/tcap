@@ -107,8 +107,51 @@ export default function IncomeDetailsPage() {
 
   if (loading)
     return (
-      <div className="text-white flex justify-center items-center h-screen">
-        Loading...
+      <div className="bg-bg-primary text-text-primary font-display min-h-screen flex flex-col overflow-hidden">
+        <NavBar />
+        <main className="flex-1 relative flex flex-col h-full overflow-hidden">
+          <div className="flex-1 overflow-y-auto relative z-10 custom-scrollbar">
+            <div className="max-w-[1000px] mx-auto px-4 py-8 md:px-6 md:py-10 lg:px-8 lg:py-12 flex flex-col gap-6 md:gap-10">
+              {/* Header Skeleton */}
+              <div className="flex flex-col gap-3 text-center lg:text-left animate-pulse">
+                <div className="h-10 bg-surface-secondary rounded-lg w-48 mx-auto lg:mx-0"></div>
+                <div className="h-6 bg-surface-secondary/50 rounded-lg w-full max-w-2xl mx-auto lg:mx-0"></div>
+              </div>
+
+              <div className="glass-panel rounded-2xl p-8 lg:p-10 shadow-2xl flex flex-col gap-10 animate-pulse">
+                {/* Gross Salary Skeleton */}
+                <div className="flex flex-col gap-4">
+                  <div className="h-6 bg-surface-secondary rounded w-32"></div>
+                  <div className="h-12 bg-surface-secondary rounded-xl w-full"></div>
+                  <div className="h-4 bg-surface-secondary/50 rounded w-full max-w-md"></div>
+                </div>
+
+                <div className="h-px w-full bg-border-primary/50"></div>
+
+                {/* Additional Income Skeleton */}
+                <div className="flex flex-col gap-6">
+                  <div className="flex flex-col gap-2">
+                    <div className="h-8 bg-surface-secondary rounded w-48"></div>
+                    <div className="h-4 bg-surface-secondary/50 rounded w-64"></div>
+                  </div>
+
+                  <div className="flex flex-col gap-3">
+                    <div className="h-20 bg-surface-secondary rounded-xl w-full"></div>
+                    <div className="h-20 bg-surface-secondary rounded-xl w-full"></div>
+                  </div>
+
+                  <div className="h-14 bg-surface-secondary rounded-xl w-full border border-dashed border-border-primary"></div>
+                </div>
+
+                {/* Total Card Skeleton */}
+                <div className="h-24 bg-surface-secondary rounded-xl w-full"></div>
+
+                {/* Actions Skeleton */}
+                <div className="h-10 bg-surface-secondary rounded-xl w-full sm:w-40 sm:self-end"></div>
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
     );
 
@@ -124,7 +167,7 @@ export default function IncomeDetailsPage() {
         <div className="flex-1 overflow-y-auto relative z-10 custom-scrollbar">
           <div className="max-w-[1000px] mx-auto px-6 py-10 lg:px-8 lg:py-12 flex flex-col gap-10">
             <div className="flex flex-col gap-3 text-center lg:text-left">
-              <h2 className="text-text-primary text-4xl font-black leading-tight tracking-[-0.033em]">
+              <h2 className="text-text-primary text-2xl md:text-4xl font-black leading-tight tracking-[-0.033em]">
                 {t("title")}
               </h2>
               <p className="text-text-secondary text-lg font-normal leading-normal max-w-3xl lg:mx-0 mx-auto">
@@ -134,7 +177,7 @@ export default function IncomeDetailsPage() {
               </p>
             </div>
 
-            <div className="glass-panel rounded-2xl p-8 lg:p-10 shadow-2xl flex flex-col gap-10">
+            <div className="glass-panel rounded-2xl p-6 md:p-8 lg:p-10 shadow-2xl flex flex-col gap-8 md:gap-10">
               {/* Gross Salary */}
               <div className="flex flex-col gap-4">
                 <label className="flex flex-col w-full">

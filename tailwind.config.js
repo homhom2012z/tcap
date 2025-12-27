@@ -45,6 +45,14 @@ module.exports = {
         warning: "var(--color-warning)",
         error: "var(--color-error)",
         info: "var(--color-info)",
+        // Input/Interactive colors
+        input: {
+          bg: "var(--input-bg)",
+          border: "var(--input-border)",
+          "border-hover": "var(--input-border-hover)",
+          "focus-ring": "var(--input-focus-ring)",
+          placeholder: "var(--input-placeholder)",
+        },
         // Backward compatibility
         "background-dark": "var(--bg-secondary)",
         "surface-glass": "var(--surface-primary)",

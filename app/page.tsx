@@ -16,6 +16,7 @@ import RecommendationCard from "@/components/features/RecommendationCard";
 import DashboardEmptyState from "@/components/features/DashboardEmptyState";
 import PayoffCalculator from "@/components/features/PayoffCalculator";
 import { useTranslations } from "@/lib/contexts/LanguageContext";
+import LazyLoad from "@/components/utils/LazyLoad";
 
 // Lazy Load Charts
 const DebtBreakdownChart = dynamic(
@@ -242,7 +243,7 @@ export default function Home() {
           {/* Header */}
           <NavBar />
 
-          <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-10">
+          <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex flex-col gap-6 md:gap-10">
             {/* Show empty state if no debts */}
             {debts.length === 0 ? (
               <DashboardEmptyState />
@@ -326,7 +327,7 @@ export default function Home() {
                         d="M 20 100 A 80 80 0 0 1 180 100"
                         fill="none"
                         stroke="currentColor"
-                        className="text-white/10 dark:text-white/10 light:text-black/10 transition-colors"
+                        className="text-border-primary transition-colors"
                         strokeLinecap="round"
                         strokeWidth="12"
                       ></path>
@@ -534,9 +535,9 @@ export default function Home() {
                         {t("debtBreakdown")}
                       </h3>
                     </div>
-                    <div className="h-[300px]">
+                    <LazyLoad className="h-[250px] md:h-[300px]">
                       <DebtBreakdownChart snapshot={snapshot} />
-                    </div>
+                    </LazyLoad>
                   </div>
 
                   {/* Cash Flow */}
@@ -549,9 +550,9 @@ export default function Home() {
                         {t("cashFlow")}
                       </h3>
                     </div>
-                    <div className="h-[300px]">
+                    <LazyLoad className="h-[250px] md:h-[300px]">
                       <CashFlowChart snapshot={snapshot} />
-                    </div>
+                    </LazyLoad>
                   </div>
                 </section>
 
@@ -591,9 +592,9 @@ export default function Home() {
                           {t("export")}
                         </button>
                       </div>
-                      <div className="h-[300px]">
+                      <LazyLoad className="h-[250px] md:h-[300px]">
                         <DSRTrendChart snapshot={snapshot} />
-                      </div>
+                      </LazyLoad>
                     </div>
 
                     {/* Payment Timeline + Debt Projection */}
@@ -608,9 +609,9 @@ export default function Home() {
                             {t("paymentSchedule")}
                           </h3>
                         </div>
-                        <div className="h-[350px]">
+                        <LazyLoad className="h-[300px] md:h-[350px]">
                           <PaymentTimeline debts={debts} />
-                        </div>
+                        </LazyLoad>
                       </div>
 
                       {/* Debt Projection */}
@@ -666,12 +667,12 @@ export default function Home() {
                             </button>
                           </div>
                         </div>
-                        <div className="h-[300px]">
+                        <LazyLoad className="h-[250px] md:h-[300px]">
                           <DebtProjectionChart
                             snapshot={snapshot}
                             isAiMode={isAiMode}
                           />
-                        </div>
+                        </LazyLoad>
                       </div>
                     </div>
                   </div>

@@ -95,10 +95,10 @@ export default function SimulatorPage() {
         <main className="flex-grow pt-10 pb-12 px-6">
           {/* View Mode Tabs */}
           <div className="max-w-6xl mx-auto mb-8">
-            <div className="flex gap-2 border-b border-border-primary overflow-x-auto scrollbar-hide pb-1">
+            <div className="flex flex-col gap-2 border-b border-border-primary pb-1">
               <button
                 onClick={() => setViewMode("INPUT")}
-                className={`px-4 py-2 font-medium transition-colors border-b-2 ${
+                className={`px-4 py-2 font-medium transition-colors border-b-2 whitespace-nowrap ${
                   viewMode === "INPUT"
                     ? "border-primary text-primary"
                     : "border-transparent text-text-secondary hover:text-text-primary"
@@ -108,7 +108,7 @@ export default function SimulatorPage() {
               </button>
               <button
                 onClick={() => setViewMode("SCENARIOS")}
-                className={`px-4 py-2 font-medium transition-colors border-b-2 flex items-center gap-2 ${
+                className={`px-4 py-2 font-medium transition-colors border-b-2 flex items-center gap-2 whitespace-nowrap ${
                   viewMode === "SCENARIOS"
                     ? "border-primary text-primary"
                     : "border-transparent text-text-secondary hover:text-text-primary"
@@ -121,7 +121,7 @@ export default function SimulatorPage() {
               </button>
               <button
                 onClick={() => setViewMode("COMPARE_SCENARIOS")}
-                className={`px-4 py-2 font-medium transition-colors border-b-2 flex items-center gap-2 ${
+                className={`px-4 py-2 font-medium transition-colors border-b-2 flex items-center gap-2 whitespace-nowrap ${
                   viewMode === "COMPARE_SCENARIOS"
                     ? "border-primary text-primary"
                     : "border-transparent text-text-secondary hover:text-text-primary"

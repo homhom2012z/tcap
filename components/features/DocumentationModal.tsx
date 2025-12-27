@@ -27,23 +27,24 @@ export default function DocumentationModal({
   return (
     <FocusTrap active={true} onEscape={onClose}>
       <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-        {/* Backdrop */}
+        {/* Backdrop - Adaptable for light mode if needed, but usually dark is fine. 
+            Using black/60 is standard for modals, but let's make it smarter. */}
         <div
           className="absolute inset-0 bg-black/60 backdrop-blur-[4px]"
           onClick={onClose}
         />
 
-        {/* Modal */}
-        <div className="relative bg-[#111816]/70 backdrop-blur-xl border border-white/10 rounded-2xl w-full max-w-4xl max-h-[85vh] overflow-hidden flex flex-col md:flex-row shadow-2xl animate-fade-in-up">
+        {/* Modal - Replaced hardcoded #111816 with bg-bg-secondary and semantic borders */}
+        <div className="relative bg-bg-secondary backdrop-blur-xl border border-border-primary rounded-2xl w-full max-w-4xl max-h-[85vh] overflow-hidden flex flex-col md:flex-row shadow-2xl animate-fade-in-up">
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 z-50 p-2 rounded-full bg-black/20 hover:bg-white/10 text-gray-400 hover:text-white transition-colors backdrop-blur-sm"
+            className="absolute top-4 right-4 z-50 p-2 rounded-full bg-surface-secondary hover:bg-surface-hover text-text-secondary hover:text-text-primary transition-colors backdrop-blur-sm"
           >
             <span className="material-symbols-outlined">close</span>
           </button>
 
           {/* Sidebar / Tabs */}
-          <div className="w-full md:w-64 bg-white/5 border-b md:border-b-0 md:border-r border-white/10 flex-shrink-0">
+          <div className="w-full md:w-64 bg-surface-secondary/30 border-b md:border-b-0 md:border-r border-border-primary flex-shrink-0">
             <div className="p-6 border-b border-border-primary">
               <h2 className="text-xl font-bold text-text-primary flex items-center gap-2">
                 <span className="material-symbols-outlined text-primary">
@@ -63,7 +64,7 @@ export default function DocumentationModal({
                   className={`w-full text-left px-4 py-3 rounded-xl flex items-center gap-3 transition-all ${
                     activeTab === tab.id
                       ? "bg-primary/20 text-primary font-bold border border-primary/20"
-                      : "text-text-secondary hover:bg-white/5 hover:text-text-primary"
+                      : "text-text-secondary hover:bg-surface-hover hover:text-text-primary"
                   }`}
                 >
                   <span className="material-symbols-outlined">{tab.icon}</span>
@@ -74,7 +75,7 @@ export default function DocumentationModal({
           </div>
 
           {/* Content Area */}
-          <div className="flex-1 overflow-y-auto p-6 md:p-8">
+          <div className="flex-1 overflow-y-auto p-6 md:p-8 custom-scrollbar">
             {activeTab === "overview" && (
               <div className="space-y-6">
                 <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10 mb-6">
@@ -115,7 +116,7 @@ export default function DocumentationModal({
                     </li>
                   </ul>
 
-                  <div className="mt-6 pt-4 border-t border-white/10">
+                  <div className="mt-6 pt-4 border-t border-border-secondary">
                     <p className="text-sm font-semibold text-text-primary mb-1">
                       {t("overview.referenceTitle")}
                     </p>

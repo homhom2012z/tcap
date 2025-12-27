@@ -18,6 +18,7 @@ export default function NavBar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Keyboard shortcuts
   useKeyboardShortcuts([
@@ -54,8 +55,8 @@ export default function NavBar() {
       setIsScrolled(scrolled);
 
       // Show/Hide logic
-      if (currentScrollY > lastScrollY && scrolled) {
-        setIsVisible(false); // Hide on scroll down
+      if (currentScrollY > lastScrollY && scrolled && !isMobileMenuOpen) {
+        setIsVisible(false); // Hide on scroll down, but not if menu is open
       } else {
         setIsVisible(true); // Show on scroll up or at top
       }
@@ -67,7 +68,12 @@ export default function NavBar() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, [lastScrollY, isMobileMenuOpen]);
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
 
   const navItems = [
     { href: "/", label: t("dashboard"), icon: "dashboard" },
@@ -86,7 +92,7 @@ export default function NavBar() {
   return (
     <>
       <div
-        className="h-36 md:h-20 w-full relative z-40 bg-transparent"
+        className="h-24 md:h-20 w-full relative z-40 bg-transparent"
         aria-hidden="true"
       />
       <header
@@ -97,8 +103,8 @@ export default function NavBar() {
             : "-translate-y-[150%] opacity-0"
         }
         ${
-          isScrolled
-            ? "top-4 w-[90%] max-w-5xl rounded-2xl shadow-2xl border border-white/10"
+          isScrolled || isMobileMenuOpen
+            ? "top-4 w-[95%] sm:w-[90%] max-w-5xl rounded-2xl shadow-2xl border border-white/10"
             : "top-0 w-full max-w-none rounded-none border-b border-border-secondary"
         }`}
       >
@@ -107,7 +113,7 @@ export default function NavBar() {
             isScrolled ? "max-w-full" : "max-w-7xl mx-auto"
           }`}
         >
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group">
               <div className="size-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary shadow-glow group-hover:bg-primary group-hover:text-text-inverse transition-colors">
@@ -119,7 +125,7 @@ export default function NavBar() {
                 <h1 className="text-xl font-bold tracking-tight text-text-primary drop-shadow-[0_0_10px_rgba(16,183,127,0.5)]">
                   TCAP
                 </h1>
-                <p className="text-[10px] text-text-secondary font-medium">
+                <p className="text-[10px] text-text-secondary font-medium hidden sm:block">
                   {t("subtitle")}
                 </p>
               </div>
@@ -146,15 +152,28 @@ export default function NavBar() {
             </nav>
 
             {/* Right Section */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               {/* Language Switcher */}
-              <LanguageSwitcher />
+              <div className="hidden sm:block">
+                <LanguageSwitcher />
+              </div>
 
               {/* Theme Toggle */}
               <ThemeToggle />
 
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="md:hidden p-2 text-text-primary hover:bg-surface-hover rounded-lg transition-colors"
+                aria-label="Toggle menu"
+              >
+                <span className="material-symbols-outlined text-[24px]">
+                  {isMobileMenuOpen ? "close" : "menu"}
+                </span>
+              </button>
+
               {/* Income Display (Desktop only) */}
-              <div className="hidden sm:flex flex-col items-end">
+              <div className="hidden sm:flex flex-col items-end pl-2 border-l border-border-secondary">
                 <span className="text-xs text-text-secondary">
                   {t("monthlyIncome")}
                 </span>
@@ -166,25 +185,53 @@ export default function NavBar() {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        <div className="md:hidden border-t border-border-secondary px-4 py-2">
-          <div className="flex items-center justify-around gap-1">
+        {/* Mobile Navigation Dropdown */}
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            isMobileMenuOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="border-t border-border-secondary p-4 space-y-2 bg-surface-primary/50 backdrop-blur-md rounded-b-2xl">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex flex-col items-center gap-1 px-3 py-2 rounded-lg text-xs font-medium transition-all flex-1 ${
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`flex items-center gap-4 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
                   isActive(item.href)
-                    ? "bg-primary/10 text-primary"
-                    : "text-text-secondary"
+                    ? "bg-primary/10 text-primary border border-primary/20"
+                    : "text-text-secondary hover:text-text-primary hover:bg-surface-hover"
                 }`}
               >
-                <span className="material-symbols-outlined text-[20px]">
-                  {item.icon}
-                </span>
-                <span className="truncate">{item.label}</span>
+                <div
+                  className={`size-8 rounded-lg flex items-center justify-center ${
+                    isActive(item.href)
+                      ? "bg-primary/20"
+                      : "bg-surface-secondary"
+                  }`}
+                >
+                  <span className="material-symbols-outlined text-[20px]">
+                    {item.icon}
+                  </span>
+                </div>
+                <span>{item.label}</span>
               </Link>
             ))}
+
+            {/* Mobile Footer Items */}
+            <div className="flex items-center justify-between pt-4 mt-2 border-t border-border-secondary">
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-text-secondary">
+                  {t("monthlyIncome")}
+                </span>
+              </div>
+              <span className="text-sm font-bold text-primary">
+                ฿{snapshot.grossMonthlyIncome.toLocaleString()}
+              </span>
+            </div>
+            <div className="flex sm:hidden justify-end pt-2">
+              <LanguageSwitcher />
+            </div>
           </div>
         </div>
       </header>
